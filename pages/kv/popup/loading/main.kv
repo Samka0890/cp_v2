@@ -1,0 +1,98 @@
+<Loading_Popup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .3, .5
+    auto_dismiss: False
+    title: 'Таны өгөгдлийг боловсруулж байна. Түр хүлээнэ үү.'
+    title_color: 0, 0, 0, 1
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: 2, 2
+            pos_hint: {'x': -.5,'y': -.5}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/assets/images/loader_1.gif'
+            anim_delay: 0.03
+        Label:
+            pos_hint: {'x': .35, 'y': .05}
+            size_hint: .3, .25
+            canvas:
+                Color:
+                    rgba: rgba("#d64f66")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: root.width*0.05,root.width*0.05,root.width*0.05,root.width*0.05
+        Button:
+            text: "Цуцлах"
+            font_size: root.height*.075
+            font_size: root.width*.075
+            size_hint: .3, .25
+            pos_hint: {'x': .35, 'y': .05}
+            background_normal: ''
+            background_color: 0,0,0,0
+            on_release:
+                root.dismiss()
+                root.CancelBtn()
+
+<Loading_Continue_Popup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .3, .5
+    auto_dismiss: False
+    title: 'Таны өгөгдлийг боловсруулж байна. Түр хүлээнэ үү.'
+    title_color: 0, 0, 0, 1
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: 2, 2
+            pos_hint: {'x': -.5,'y': -.5}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/assets/images/loader_1.gif'
+            anim_delay: 0.03
+        Label:
+            pos_hint: {'x': .35, 'y': .05}
+            size_hint: .3, .25
+            canvas:
+                Color:
+                    rgba: rgba("#d64f66")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: root.width*0.05,root.width*0.05,root.width*0.05,root.width*0.05
+        Button:
+            text: "Цуцлах"
+            font_size: root.height*.075
+            font_size: root.width*.075
+            size_hint: .3, .25
+            pos_hint: {'x': .35, 'y': .05}
+            background_normal: ''
+            background_color: 0,0,0,0
+            on_release:
+                root.dismiss()
+                root.CancelBtn()
+
+<Loading_Direct_Print_Popup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .3, .5
+    auto_dismiss: False
+    title: 'Таны өгөгдлийг боловсруулж байна. Түр хүлээнэ үү.'
+    title_color: 0, 0, 0, 1
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: 2, 2
+            pos_hint: {'x': -.5,'y': -.5}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/assets/images/loader_1.gif'
+            anim_delay: 0.03

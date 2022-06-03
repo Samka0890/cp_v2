@@ -1,0 +1,184 @@
+<SocialPay_Popup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .5, .6
+    separator_height: 0
+    auto_dismiss: False
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: .2, .2
+            pos_hint: {'x': -.001,'y': .89}
+            source: 'pages/kv/popup/social_pay/images/SocialPay_icon.png'
+
+        Label:
+            text: "SOCIAL PAY"
+            font_size: root.height*.04
+            font_size: root.width*.04
+            color: rgba("#2894c9")
+            pos_hint: {'x': -.225,'y': .48}
+        Image:
+            size_hint: .15, .15
+            pos_hint: {'x': .875,'y': .925}
+            source: 'pages/kv/popup/social_pay/images/time_border.png'
+        Label:
+            id: time_counter
+            text: "300"
+            font_size: root.height*.035
+            font_size: root.width*.035
+            color: rgba("#2894c9")
+            pos_hint: {'x': .451,'y': .5}
+#-----------------------------Show amount of pay---------------
+        FloatLayout:
+            pos_hint: {'x': 0,'y': -0.05}
+            Label:
+                text: "ТАНЫ ТӨЛБӨР"
+                font_size: root.height*.035
+                font_size: root.width*.035
+                color: rgba("#333333")
+                pos_hint: {'x': -.225,'y': 0.325}
+
+            Label:
+                pos_hint: {'x': 0.075,'y': 0.775}
+                canvas:
+                    Color:
+                        rgba: .3, .3, .3, 1
+                    Line:
+                        width: 1
+                        rectangle: (self.x, self.y, 375, 0.03)
+
+            Label:
+                text: "ХУВИЛАХ ТОО"
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.35,'y': 0.2}
+
+            Label:
+                id: CopyNum
+                text: "0"
+                bold: True
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.075,'y': 0.2}
+
+            Label:
+                text: "ХУУДАСНЫ ТОО"
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.341,'y': 0.12}
+
+            Label:
+                id:PageNum
+                text: "0"
+                bold: True
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.075,'y': 0.12}
+
+            Label:
+                text: "ХЭВЛЭХ ӨНГӨ"
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.3495,'y': 0.04}
+
+            Label:
+                id: PageColor
+                text: "Өнгөт"
+                bold: True
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.19,'y': 0.04}
+
+            Label:
+                id: PageColor_price
+                text: "0"
+                bold: True
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.075,'y': 0.04}
+
+            Label:
+                text: "ХЭВЛЭХ ТАЛ"
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.357,'y': -0.04}
+
+            Label:
+                id: PageSide_price
+                text: "0"
+                bold: True
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': -.075,'y': -0.04}
+
+            Label:
+                pos_hint: {'x': 0.075,'y': 0.39}
+                canvas:
+                    Color:
+                        rgba: .3, .3, .3, 1
+                    Line:
+                        width: 1.1
+                        rectangle: (self.x, self.y, 375, 0.03)
+            Label:
+                id: Pay_Amount
+                text: "0 MNT"
+                font_size: root.height*.04
+                font_size: root.width*.04
+                color: rgba("#333333")
+                pos_hint: {'x': -.225,'y': -0.17}
+    #--------------------------------QR SECTION-----------------------
+        FloatLayout:
+            pos_hint: {'x': 0,'y': 0}
+            Label:
+                id: SocialPay_Caption
+                text: "УНШИЖ БАЙНА. ТА ТҮР ХҮЛЭЭНЭ ҮҮ..."
+                font_size: root.height*.02
+                font_size: root.width*.02
+                color: rgba("#333333")
+                pos_hint: {'x': 0.25,'y': .325}
+            Image:
+                id: SocialPay_QR
+                size_hint: .5, .5
+                pos_hint: {'x': .5,'y': .275}
+                source: 'pages/kv/assets/images/CP_logo.png'
+                anim_delay: 0.03
+    #-----------------------------Back Button----------------------------
+            Label:
+                pos_hint: {'x': .38, 'y': -.016}
+                canvas:
+                    Rectangle:
+                        source: 'pages/kv/assets/images/shadow1.png'
+                        size: root.width*0.245, root.height*0.18
+                        pos: self.pos
+            Label:
+                pos_hint: {'x': .42, 'y': .02}
+                size_hint: .175, .125
+                canvas:
+                    Color:
+                        rgba: rgba("#d64f66")
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: root.width*0.02,root.width*0.02,root.width*0.02,root.width*0.02
+            Button:
+                text: "БУЦАХ"
+                font_size: root.height*.03
+                font_size: root.width*.03
+                size_hint: .175, .125
+                pos_hint: {'x': .42, 'y': .02}
+                background_normal: ''
+                background_color: 0,0,0,0
+                on_release:
+                    root.obj.payment_pp()
+                    root.obj.print_sound()
+                    root.stopCheckPayment()
+                    root.dismiss()

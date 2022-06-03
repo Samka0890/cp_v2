@@ -1,0 +1,143 @@
+<FeedBackPopup>:
+    id:pop
+    #color: 1,1,1,1
+    #source: 'pages/kv/assets/images/white.jpg'
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .3, .3
+    #auto_dismiss: False
+    title: 'Үнэлгээ'
+    title_color: 0, 0, 0, 1
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height: 0
+    FloatLayout:
+        Image:
+            id: bt1
+            source: 'pages/kv/popup/star/images/poo_grey.png'
+            size_hint: .450, .450
+            pos_hint: {'x': -.12, 'y': .6}
+        Button:
+            size_hint: .110, .340
+            pos_hint: {'x': .05, 'y': .6}
+            background_color: 0,0,0,0
+            on_press:
+                bt1.source = 'pages/kv/popup/star/images/poo.png'
+                bt1.size_hint = .470, .470
+                bt2.source = 'pages/kv/popup/star/images/angry.png'
+                bt2.size_hint = .340, .340
+                bt3.source = 'pages/kv/popup/star/images/sad_grey.png'
+                bt3.size_hint = .330, .330
+                bt4.source = 'pages/kv/popup/star/images/happy_grey.png'
+                bt4.size_hint = .330, .330
+                bt5.source = 'pages/kv/popup/star/images/love_grey.png'
+                bt5.size_hint = .340, .340
+                root.feedback_rate(1)
+
+        Image:
+            id: bt2
+            source: 'pages/kv/popup/star/images/angry.png'
+            size_hint: .330, .330
+            pos_hint: {'x': .11, 'y': .6}
+        Button:
+            background_color: 0,0,0,0
+            size_hint: .140, .320
+            pos_hint: {'x': .21, 'y': .6}
+            on_press:
+                bt1.source = 'CloudPrint/asset/popup_img/emoji/poo_grey.png'
+                bt1.size_hint = .450, .450
+                bt2.source = 'CloudPrint/asset/popup_img/emoji/angry.png'
+                bt2.size_hint = .350, .350
+                bt3.source = 'pages/kv/popup/star/images/sad_grey.png'
+                bt3.size_hint = .330, .330
+                bt4.source = 'pages/kv/popup/star/images/happy_grey.png'
+                bt4.size_hint = .330, .330
+                bt5.source = 'pages/kv/popup/star/images/love_grey.png'
+                bt5.size_hint = .340, .340
+                root.feedback_rate(2)
+
+        Image:
+            id: bt3
+            source: 'pages/kv/popup/star/images/sad_grey.png'
+            size_hint: .330, .330
+            pos_hint: {'x': .305, 'y': .6}
+        Button:
+            background_color: 0,0,0,0
+            size_hint: .140, .320
+            pos_hint: {'x': .40, 'y': .6}
+            on_press:
+                bt1.source = 'CloudPrint/asset/popup_img/emoji/poo_grey.png'
+                bt1.size_hint = .450, .450
+                bt2.source = 'pages/kv/popup/star/images/angry.png'
+                bt2.size_hint = .340, .340
+                bt3.source = 'CloudPrint/asset/popup_img/emoji/sad.png'
+                bt3.size_hint = .340, .340
+                bt4.source = 'pages/kv/popup/star/images/happy_grey.png'
+                bt4.size_hint = .330, .330
+                bt5.source = 'pages/kv/popup/star/images/love_grey.png'
+                bt5.size_hint = .340, .340
+                root.feedback_rate(3)
+
+        Image:
+            id: bt4
+            source: 'pages/kv/popup/star/images/happy_grey.png'
+            size_hint: .330, .330
+            pos_hint: {'x': .494, 'y': .6}
+
+        Button:
+            background_color: 0,0,0,0
+            size_hint: .140, .320
+            pos_hint: {'x': .59, 'y': .6}
+            on_press:
+                bt1.source = 'CloudPrint/asset/popup_img/emoji/poo_grey.png'
+                bt1.size_hint = .450, .450
+                bt2.source = 'pages/kv/popup/star/images/angry.png'
+                bt2.size_hint = .340, .340
+                bt3.source = 'pages/kv/popup/star/images/sad_grey.png'
+                bt3.size_hint = .330, .330
+                bt4.source = 'CloudPrint/asset/popup_img/emoji/happy.png'
+                bt4.size_hint = .340, .340
+                bt5.source = 'pages/kv/popup/star/images/love_grey.png'
+                bt5.size_hint = .340, .340
+                root.feedback_rate(4)
+
+        Image:
+            id: bt5
+            source: 'pages/kv/popup/star/images/love_grey.png'
+            size_hint: .340, .340
+            pos_hint: {'x': .68, 'y': .6}
+        Button:
+            background_color: 0,0,0,0
+            size_hint: .150, .320
+            pos_hint: {'x': .78, 'y': .6}
+            on_press:
+                bt1.source = 'CloudPrint/asset/popup_img/emoji/poo_grey.png'
+                bt1.size_hint = .450, .450
+                bt2.source = 'pages/kv/popup/star/images/angry.png'
+                bt2.size_hint = .340, .340
+                bt3.source = 'pages/kv/popup/star/images/sad_grey.png'
+                bt3.size_hint = .330, .330
+                bt4.source = 'pages/kv/popup/star/images/happy_grey.png'
+                bt4.size_hint = .330, .330
+                bt5.source = 'CloudPrint/asset/popup_img/emoji/love.png'
+                bt5.size_hint = .350, .350
+                root.feedback_rate(5)
+        Label:
+            pos_hint: {'x': .32, 'y': .1}
+            size_hint: .33, .26
+            canvas:
+                Color:
+                    rgba: rgba("#d64f66")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+        Button:
+            bold: True
+            text: "Хаах"
+            font_size: root.height*.06
+            font_size: root.width*.05
+            size_hint: .33, .26
+            pos_hint: {'x': .32, 'y': .1}
+            background_normal: ''
+            background_color: 0,0,0,0
+            on_release:  root.dismiss()

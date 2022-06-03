@@ -1,0 +1,809 @@
+<ButtonRound@Button>:
+    font_size: root.height*.2
+    font_size: root.width*.2
+    background_normal: ''
+    background_color: 1,1,1,0
+    size_hint: 0.15, 0.12
+
+<Label_Checkbox@Label>:
+    font_size: root.width*.035
+    font_size: root.height*.035
+    color: 0,0,0,1
+    text_size: self.size
+    halign: 'left'
+    valign: 'middle'
+
+<Btn_Advanced@Button>:
+    size_hint: 0.1, 0.0675
+    color: 0.3,0.3,0.3,1
+    background_normal: ''
+    background_color: 1,1,1,0
+    font_size: root.width*.325
+    font_size: root.height*.325
+
+<FloatLayout_background@FloatLayout>:
+    id: bground
+    canvas:
+        Color:
+            rgba: 0.95, 0.95, 0.95, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+
+<Label_kb@Label>:
+    size_hint: 0.12, 0.15
+    canvas:
+        Color:
+            rgba: rgba("#d9d9d9")
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: root.width*0.2,root.width*0.2,root.width*0.2,root.width*0.2
+
+<Button_kb@Button>:
+    color: 0,0,0,1
+    background_normal: ''
+    background_color: 1,1,1,0
+    font_size: root.height*0.6
+    size_hint: 0.12, 0.15
+
+<PrintScreen>:
+    id: print_screen
+    name: "print_screen"
+    rightButton: rightButton
+    leftButton: leftButton
+    imageView: imageView
+    slider: slider
+#-----------------------------------------BACK AND PRINT BUTTON------------------------------------
+    FloatLayout:
+    	Label:
+            pos_hint: {'x': -.009, 'y': -0.011}
+            canvas:
+                Rectangle:
+                    source: 'pages/kv/assets/images/shadow1.png'
+                    size: root.width*0.205,root.height*0.185
+                    pos: self.pos
+        Label:
+            pos_hint: {'x': .02, 'y': 0.025}
+            canvas:
+                Color:
+                    rgba: rgba("#d64f66")
+                RoundedRectangle:
+                    size: root.width*0.15,root.height*0.12
+                    pos: self.pos
+                    radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+        ButtonRound:
+            id: offline_btn
+            text: "Буцах"
+            pos_hint: {'x': .02, 'y': 0.025}
+            on_press:
+                slider.value = 1
+            	root.return_page()
+                root.reset_timer()
+                pageNum_input.text = ''
+                copies_input.text = '1'
+                lab_colorful.pos_hint = {'x': .475, 'y': .275}
+                root.color_choose('-color')
+                lab_all.opacity = 1
+                lab_custom.opacity = 0
+                pageNum_input.opacity = 0
+                pageNum_input.disabled = True
+                btn_custom.color = 0,0,0,1
+                btn_all.color = 0.95,0.95,0.95,1
+                all_caption.opacity = 1
+                root.page_value(True)
+                pageNum_input.text = ''
+                Error_comment.text = ''
+                lab_colorful.pos_hint= {'x': .475, 'y': .275}
+                lab_colorful.opacity = 1
+                lab_colorless.disabled = False
+                lab_colorless.opacity = 1
+                lab_colorless.pos_hint = {'x': 0.465, 'y': 0.3}
+                btn_colorless.disabled = False
+                btn_colorless.opacity = 1
+                btn_colorless.pos_hint = {'x': 0.7, 'y': 0.3}
+                lab_colorful_text.opacity = 1
+                lab_colorful_text.pos_hint = {'x': 0.4625, 'y': 0.125}
+                btn_colorless_text.opacity = 1
+                btn_colorless_text.pos_hint = {'x': .7025, 'y': .125}
+                kb.opacity = 0
+                loading_text.opacity = 1
+                kb.disabled = True
+                kb_pos.opacity = 0
+                kb_pos.disabled = True
+                slider_all.text = "     /    1"
+                imageView.source = 'pages/kv/assets/images/loader_1.gif'
+                imageView.reload()
+                slider_text.text = '1'
+                root.check_duplex('')
+                One_side.color = 1,1,1,1
+                Two_side.color = 0.3,0.3,0.3,1
+                Side_Chooser.pos_hint = {'x': .465, 'y': .2125}
+                root.check_orientation('-portrait')
+                Vertical.color = 1,1,1,1
+                Horizontal.color = .3, .3, .3, 1
+                Orientation_Chooser.pos_hint = {'x': .72, 'y': .2125}
+                CashAmount.text = "0"
+        Label:
+            pos_hint: {'x': .745, 'y': -0.011}
+            canvas:
+                Rectangle:
+                    source: 'pages/kv/assets/images/shadow1.png'
+                    size: root.width*0.255,root.height*0.185
+                    pos: self.pos
+        Label:
+            pos_hint: {'x': .775, 'y': 0.025}
+            canvas:
+                Color:
+                    rgba: rgba("#4fd188")
+                RoundedRectangle:
+                    size: root.width*0.2,root.height*0.12
+                    pos: self.pos
+                    radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+        ButtonRound:
+            id: print_service
+            text: "ҮРГЭЛЖЛЭХ"
+            font_size: root.height*.005
+            font_size: root.width*.005
+            pos_hint: {'x': .8, 'y': 0.025}
+            on_press:
+                root.check_left_paper()
+                # root._print_service()
+
+    #-----------------------------------------SLIDE SHOWER SECTION------------------------------------
+    Label:
+        pos_hint: {'x': .03, 'y': .2}
+        canvas:
+            Color:
+                rgba: rgba("#ebebeb")
+            RoundedRectangle:
+                size: root.width*0.4,root.height*0.75
+                pos: self.pos
+                radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+    FloatLayout:
+        Image:
+            size_hint: .3, .6
+            pos_hint: {'x': .0775,'y': .32}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/assets/images/loader_1.gif'
+            anim_delay: 0.03
+
+        #-----------------------RIGHT ARROW-----------------------
+        ImageButton:
+            source: "pages/kv/printOpt/images/rightArrow.png"
+            size_hint: (.035, .045)
+            pos_hint: {'x': .375, 'y': .25}
+            disabled: True
+            on_press:
+                root.set_slider(1)
+                root.print_sound()
+            id: rightButton
+        #-----------------------LEFT ARROW------------------------
+        ImageButton:
+            source: "pages/kv/printOpt/images/leftArrow.png"
+            size_hint: (.035, .045)
+            disabled: True
+            pos_hint: {'x': .045, 'y': 0.25}
+            on_press:
+                root.set_slider(-1)
+                root.print_sound()
+            id: leftButton
+        Slider:
+            id: slider
+            value: 1
+            step: 1
+            min: 1
+            max: 100
+            size_hint: .3, .02
+            pos_hint: {'x':.0775, 'y':.265}
+            on_value: root.set_slider(0)
+            disabled: True
+        Label:
+            id: slider_text
+            text: "1"
+            font_size: root.height*.0175
+            font_size: root.width*.0175
+            color: rgba("#333333")
+            pos_hint: {'center_x': 0.215, 'center_y': 0.3}
+        Label:
+            id: slider_all
+            text: "     /    1"
+            font_size: root.height*.0175
+            font_size: root.width*.0175
+            color: rgba("#333333")
+            pos_hint:{'center_x': 0.24, 'center_y': 0.3}
+        Label:
+            id: loading_text
+            opacity: 1
+            text: "Өнөөдөр танд аз жаргал хүсье! <3 \nАз жаргалтайгаар түр хүлээнэ үү... "
+            font_size: root.height*.01
+            font_size: root.width*.01
+            color: rgba("#f06c65")
+            pos_hint: {'center_x': 0.225, 'center_y': 0.4}
+    #-----------------------------------------PRINTER SETTING SECTION------------------------------------
+    FloatLayout:
+    #---------------- COPIES------------------
+        Label:
+            pos_hint: {'x': .45, 'y': .875}
+            canvas:
+                Color:
+                    rgba: rgba("#ebebeb")
+                RoundedRectangle:
+                    size: root.width*0.5,root.height*0.075
+                    pos: self.pos
+                    radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+        Label_Checkbox:
+            text: "ХУВИЛАХ ТОО"
+            pos_hint: {'x': .475, 'y': .4125}
+        ImageButton:
+            source: "pages/kv/printOpt/images/upButton.png"
+            pos_hint: {'x': 0.675, 'y': 0.862}
+            size_hint: 0.0275, 0.1
+            on_press:
+                root._copies_number(1)
+                root.cash_calculator()
+                root.print_sound()
+        ImageButton:
+            source: "pages/kv/printOpt/images/DownButton.png"
+            pos_hint: {'x': 0.825, 'y': 0.862}
+            size_hint: 0.0275, 0.1
+            on_press:
+                root._copies_number(-1)
+                root.cash_calculator()
+                root.print_sound()
+        Label:
+            id: copies_input
+            text: '1'
+            color: 0,0,0,1
+            pos_hint: {'x': 0.725, 'y': 0.875}
+            font_size: root.height*0.05
+            size_hint: 0.075, 0.08
+        #----------------PAGES------------------
+        FloatLayout:
+            pos_hint: {'x': 0, 'y': .03}
+            Label:
+                pos_hint: {'x': .45, 'y': .675}
+                canvas:
+                    Color:
+                        rgba: rgba("#ebebeb")
+                    RoundedRectangle:
+                        size: root.width*0.5,root.height*0.15
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            FloatLayout:
+                pos_hint: {'x': 0, 'y': .015}
+                Label:
+                    pos_hint: {'x': .465, 'y': .7425}
+                    id: lab_all
+                    canvas:
+                        Color:
+                            rgba: rgba("#adadad")
+                        RoundedRectangle:
+                            size: root.width*0.16,root.height*0.0575
+                            pos: self.pos
+                            radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+                Button:
+                    id: btn_all
+                    text: "БҮХ ХУУДАС"
+                    color: 0.95,0.95,0.95,1
+                    pos_hint: {'x': 0.445, 'y': 0.72}
+                    size_hint: 0.2, 0.1
+                    background_color: 1,1,1,0
+                    font_size: root.width*.03
+                    font_size: root.height*.03
+                    on_press:
+                        lab_all.opacity = 1
+                        lab_custom.opacity = 0
+                        pageNum_input.opacity = 0
+                        pageNum_input.disabled = True
+                        btn_custom.color = 0,0,0,1
+                        btn_all.color = 0.95,0.95,0.95,1
+                        all_caption.opacity = 1
+                        root.page_value(True)
+                        pageNum_input.text = ''
+                        Error_comment.text = ''
+                        lab_colorful.pos_hint= ( {'x': .475, 'y': .275} if root.color == "-color" else {'x': .705, 'y': .275} )
+                        lab_colorful.opacity = 1
+                        lab_colorless.disabled = False
+                        lab_colorless.opacity = 1
+                        lab_colorless.pos_hint = {'x': 0.465, 'y': 0.3}
+                        btn_colorless.disabled = False
+                        btn_colorless.opacity = 1
+                        btn_colorless.pos_hint = {'x': 0.7, 'y': 0.3}
+                        lab_colorful_text.opacity = 1
+                        lab_colorful_text.pos_hint = {'x': 0.4625, 'y': 0.125}
+                        btn_colorless_text.opacity = 1
+                        btn_colorless_text.pos_hint = {'x': .7025, 'y': .125}
+                        kb.opacity = 0
+                        kb.disabled = True
+                        kb_pos.opacity = 0
+                        kb_pos.disabled = True
+                        root.print_sound()
+                        root.cash_calculator()
+                Label:
+                    id: all_caption
+                    opacity: 1
+                    text: "БҮХ ХУУДАС СОНГОГДСОН БАЙНА!"
+                    font_size: root.width*.02
+                    font_size: root.height*.0225
+                    color: rgba("#37a151")
+                    pos_hint: {'center_x': 0.79, 'center_y': 0.775}
+                Label:
+                    id: lab_custom
+                    opacity: 0
+                    pos_hint: {'x': .465, 'y': .67}
+                    canvas:
+                        Color:
+                            rgba: rgba("#adadad")
+                        RoundedRectangle:
+                            size: root.width*0.2,root.height*0.0575
+                            pos: self.pos
+                            radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+                Button:
+                    id: btn_custom
+                    text: "ХУУДАС СОНГОХ"
+                    color: 0,0,0,1
+                    pos_hint: {'x': 0.465, 'y': 0.65}
+                    size_hint: 0.2, 0.1
+                    font_size: root.width*.03
+                    font_size: root.height*.03
+                    background_color: 1,1,1,0
+                    on_press:
+                        lab_all.opacity = 0
+                        lab_custom.opacity = 1
+                        pageNum_input.opacity = 1
+                        pageNum_input.disabled = False
+                        btn_custom.color = 0.95,0.95,0.95,1
+                        btn_all.color = 0.1,0.1,0.1,1
+                        all_caption.opacity = 0
+                        root.page_value(False)
+                        lab_colorful.pos_hint = {'x': 1, 'y': 1}
+                        lab_colorless.pos_hint = {'x': 1, 'y': 1}
+                        btn_colorless.pos_hint = {'x': 1, 'y': 1}
+                        lab_colorless.disabled = True
+                        btn_colorless.disabled = True
+                        lab_colorful_text.pos_hint = {'x': 1, 'y': 1}
+                        btn_colorless_text.pos_hint = {'x': 1, 'y': 1}
+                        kb.opacity = 1
+                        kb.disabled = False
+                        kb_pos.opacity = 1
+                        kb_pos.disabled = False
+                        root.print_sound()
+                        root.cash_calculator()
+                        pageNum_input.text = ''
+                TextInput:
+                    id: pageNum_input
+                    opacity: 0
+                    disabled: True
+                    font_size: root.width*.02
+                    hint_text:'1-5,7,9-12 гэх мэт'
+                    pos_hint: {'center_x': 0.8, 'center_y': 0.7}
+                    size_hint: 0.265, 0.065
+                    multiline: False
+                    padding: [0, 0, 0, 0]
+                    # top, bottom
+                    # padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    on_text:
+                        root.page_number()
+                        root.cash_calculator()
+                Label:
+                    opacity: 1
+                    id: Error_comment
+                    color: rgba("#d63c3c")
+                    pos_hint: {'center_x': 0.8, 'center_y': 0.75}
+            #------------------------KeyBoard------------------------
+    FloatLayout:
+        pos_hint: {'x': 0, 'y': .085}
+        Label:
+            pos_hint: {'x': .45, 'y': .225}
+            canvas:
+                Color:
+                    rgba: rgba("#ebebeb")
+                RoundedRectangle:
+                    size: root.width*0.5,root.height*0.375
+                    pos: self.pos
+                    radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+        FloatLayout:
+            id: kb
+            opacity: 0
+            size_hint: 0.5, 0.4
+            pos_hint: {'x': .45, 'y': .225}
+            FloatLayout:
+                id: kb_pos
+                opacity: 0
+                disabled: True
+                size_hint: 1, 1
+                pos_hint: {"x": 0, "y": -.05}
+                Label_kb:
+                    pos_hint: {"x": 0.125, "y": 0.75}
+                Button_kb:
+                    text: "1"
+                    pos_hint: {"x": 0.125, "y": 0.75}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.275, "y": 0.75}
+                Button_kb:
+                    text: "2"
+                    pos_hint: {"x": 0.275, "y": 0.75}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.425, "y": 0.75}
+                Button_kb:
+                    text: "3"
+                    pos_hint: {"x": 0.425, "y": 0.75}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.125, "y": 0.55}
+                Button_kb:
+                    text: "4"
+                    pos_hint: {"x": 0.125, "y": 0.55}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.275, "y": 0.55}
+                Button_kb:
+                    text: "5"
+                    pos_hint: {"x": 0.275, "y": 0.55}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.425, "y": 0.55}
+                Button_kb:
+                    text: "6"
+                    pos_hint: {"x": 0.425, "y": 0.55}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.125, "y": 0.35}
+                Button_kb:
+                    text: "7"
+                    pos_hint: {"x": 0.125, "y": 0.35}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.275, "y": 0.35}
+                Button_kb:
+                    text: "8"
+                    pos_hint: {"x": 0.275, "y": 0.35}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.425, "y": 0.35}
+                Button_kb:
+                    text: "9"
+                    pos_hint: {"x": 0.425, "y": 0.35}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.275, "y": 0.15}
+                Button_kb:
+                    text: "0"
+                    pos_hint: {"x": 0.275, "y": 0.15}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label:
+                    size_hint: 0.12, 0.75
+                    pos_hint: {"x": 0.575, "y": 0.15}
+                    canvas:
+                        Color:
+                            rgba: rgba("#e36666")
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+                ImageButton:
+                    id: clear_button
+                    source: "pages/kv/assets/images/printDelBtn.png"
+                    size_hint: 0.12, 0.75
+                    pos_hint: {"x": 0.575, "y": 0.15}
+                    on_press:
+                        pageNum_input.text = pageNum_input.text[:-1]
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.125, "y": 0.15}
+                Button_kb:
+                    text: "-"
+                    pos_hint: {"x": 0.125, "y": 0.15}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label_kb:
+                    pos_hint: {"x": 0.425, "y": 0.15}
+                Button_kb:
+                    text: ","
+                    pos_hint: {"x": 0.425, "y": 0.15}
+                    on_press:
+                        pageNum_input.text += self.text
+                        root.print_sound()
+                Label:
+                    size_hint: 0.2, 0.25
+                    pos_hint: {"x": 0.75, "y": 0.15}
+                    canvas:
+                        Color:
+                            rgba: rgba("#59b9e3")
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: root.width*0.02,root.width*0.02,root.width*0.02,root.width*0.02
+                Button:
+                    id: bolson
+                    text: "Болсон"
+                    color: 1,1,1,1
+                    background_normal: ''
+                    background_color: 1,1,1,0
+                    font_size: root.height*0.03
+                    size_hint: 0.2, 0.25
+                    pos_hint: {"x": 0.75, "y": 0.15}
+                    on_press:
+                        root._key_correct()
+                        pageNum_input.disabled = True
+                        pageNum_input.opacity = 1
+                        lab_colorful.pos_hint = {'x': .475, 'y': .275}
+                        lab_colorful.opacity = 1
+                        lab_colorless.pos_hint = {'x': 0.465, 'y': 0.3}
+                        btn_colorless.pos_hint = {'x': 0.7, 'y': 0.3}
+                        lab_colorless.disabled = True
+                        btn_colorless.disabled = True
+                        lab_colorful_text.pos_hint = {'x': 0.4625, 'y': 0.125}
+                        btn_colorless_text.pos_hint = {'x': .7025, 'y': .125}
+                        lab_colorless.disabled = False
+                        btn_colorless.disabled = False
+                        root.color_choose('-color')
+                        root.cash_calculator()
+                        root.print_sound()
+                        kb.opacity = 0
+                        kb.disabled = True
+                        kb_pos.opacity = 0
+                        kb_pos.disabled = True
+#------------------------------------COLOR CHOOSE---------------------------------------
+        Label:
+            pos_hint: {'x': .475, 'y': .275}
+            id: lab_colorful
+            canvas:
+                Color:
+                    rgba: rgba("#adadad")
+                RoundedRectangle:
+                    size: root.width*0.23,root.height*0.3
+                    pos: self.pos
+                    radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+        ImageButton:
+            source: "pages/kv/printOpt/images/colorfile.png"
+            id: lab_colorless
+            pos_hint: {'x': 0.465, 'y': 0.3}
+            size_hint: 0.25, 0.25
+            on_press:
+                lab_colorful.pos_hint = {'x': .475, 'y': .275}
+                root.color_choose('-color')
+                root.cash_calculator()
+                root.print_sound()
+        Label:
+            id: lab_colorful_text
+            text: "ӨНГӨТ"
+            pos_hint: {'x': 0.4625, 'y': 0.125}
+            font_size: root.height*.0175
+            font_size: root.width*.0175
+            size_hint: 0.25, 0.25
+            color: 0,0,0,1
+        ImageButton:
+            source: "pages/kv/printOpt/images/blackNwhite.png"
+            id: btn_colorless
+            pos_hint: {'x': 0.7, 'y': 0.3}
+            size_hint: 0.25, 0.25
+            on_press:
+                lab_colorful.pos_hint = {'x': .705, 'y': .275}
+                root.color_choose('-gray')
+                root.cash_calculator()
+                root.print_sound()
+        Label:
+            id: btn_colorless_text
+            text: "ХАР ЦАГААН"
+            pos_hint: {'x': .7025, 'y': .125}
+            font_size: root.height*.0175
+            font_size: root.width*.0175
+            size_hint: 0.25, 0.25
+            color: 0,0,0,1
+
+        Label:
+            opacity: 0
+            text: "Хуудасны дугаар"
+            color: rgba("#d63c3c")
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+#------------------------------------------------ONE SIDE OR TWO SIDE--------------------------------
+        FloatLayout:
+            Label:
+                pos_hint: {'x': .45, 'y': .2}
+                canvas:
+                    Color:
+                        rgba: rgba("#ebebeb")
+                    RoundedRectangle:
+                        size: root.width*0.2425,root.height*0.09
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Label:
+                id: One_Side_lbl
+                pos_hint: {'x': .465, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#fcfcfc")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+
+            Label:
+                id: Two_side_lbl
+                pos_hint: {'x': .5775, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#fcfcfc")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Label:
+                id: Side_Chooser
+                pos_hint: {'x': .465, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#6dcde8")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Btn_Advanced:
+                id: One_side
+                color: 1,1,1,1
+                text: "НЭГ ТАЛДАА"
+                pos_hint: {'x': .465, 'y': .2125}
+                on_press:
+                    root.check_duplex('')
+                    root.print_sound()
+                    root.cash_calculator()
+                    self.color = 1,1,1,1
+                    Two_side.color = 0.3,0.3,0.3,1
+                    Side_Chooser.pos_hint = {'x': .465, 'y': .2125}
+            Btn_Advanced:
+                id: Two_side
+                text: "ХОЁР ТАЛДАА"
+                pos_hint: {'x': .5775, 'y': .2125}
+                on_press:
+                    root.check_duplex('-duplex')
+                    root.cash_calculator()
+                    root.print_sound()
+                    self.color = 1,1,1,1
+                    One_side.color = 0.3,0.3,0.3,1
+                    Side_Chooser.pos_hint = {'x': .5775, 'y': .2125}
+#-----------------------------------------------Portrait Or Landscape-------------------------------------
+            Label:
+                pos_hint: {'x': .7075, 'y': .2}
+                canvas:
+                    Color:
+                        rgba: rgba("#ebebeb")
+                    RoundedRectangle:
+                        size: root.width*0.2425,root.height*0.09
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Label:
+                id: Vertical_lbl
+                pos_hint: {'x': .72, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#fcfcfc")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+
+            Label:
+                id: Horizontal_lbl
+                pos_hint: {'x': .8375, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#fcfcfc")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Label:
+                id: Orientation_Chooser
+                pos_hint: {'x': .72, 'y': .2125}
+                canvas:
+                    Color:
+                        rgba: rgba("#7f6de8")
+                    RoundedRectangle:
+                        size: root.width*0.1,root.height*0.0675
+                        pos: self.pos
+                        radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+            Btn_Advanced:
+                id: Vertical
+                color: 1,1,1,1
+                text: "БОСООГООР"
+                pos_hint: {'x': .72, 'y': .2125}
+                disabled: False
+                on_press:
+                    root.check_orientation('-portrait')
+                    root.print_sound()
+                    self.color = 1,1,1,1
+                    Horizontal.color = .3, .3, .3, 1
+                    Orientation_Chooser.pos_hint = {'x': .72, 'y': .2125}
+
+            Btn_Advanced:
+                id: Horizontal
+                text: "ХЭВТЭЭГЭЭР"
+                pos_hint: {'x': .8375, 'y': .2125}
+                color:.3,.3,.3,1
+                disabled: False
+                background_disabled_normal: ''
+                disabled_color: rgba("#8a8a8a")
+                on_press:
+                    root.check_orientation('-landscape')
+                    root.print_sound()
+                    self.color = 1,1,1,1
+                    Vertical.color = .3, .3, .3, 1
+                    Orientation_Chooser.pos_hint = {'x': .8375, 'y': .2125}
+            Label:
+                text: "Хэрвээ таны файл Landscape тохиргоотой \n бол Хэвтээг сонгоно уу."
+                pos_hint: {'x': .325, 'y': -.325}
+                font_size: root.height*0.02
+                color: rgba("#555555")
+    FloatLayout:
+        Label:
+            pos_hint: {'x': .36, 'y': .02}
+            canvas:
+                Color:
+                    rgba: rgba("#ebebeb")
+                RoundedRectangle:
+                    size: root.width*0.2425,root.height*0.12
+                    pos: self.pos
+                    radius: root.width*0.01,root.width*0.01,root.width*0.01,root.width*0.01
+
+        Label:
+            text: "ТӨЛБӨР"
+            bold: True
+            pos_hint: {'x': 0.28, 'y': -.045}
+            font_size: root.height*.018
+            font_size: root.width*.018
+            size_hint: 0.25, 0.25
+            color: 0,0,0,1
+        Label:
+            pos_hint: {'x': .45, 'y': 0.04}
+            canvas:
+                Color:
+                    rgba: rgba("#ffffff")
+                RoundedRectangle:
+                    size: root.width*0.12,root.height*0.08
+                    pos: self.pos
+                    radius: root.width*0.02,root.width*0.02,root.width*0.02,root.width*0.02
+        Label:
+            id: CashAmount
+            text: "0"
+            bold: True
+            pos_hint: {'x': 0.385, 'y': -.045}
+            font_size: root.height*.022
+            font_size: root.width*.022
+            size_hint: 0.25, 0.25
+            color: 0,0,0,1
+        Image:
+            size_hint: .06, .06
+            pos_hint: {'x': .555,'y': .05}
+            name: imageView
+            source: 'pages/kv/printOpt/images/tugrug.png'
+
+
+
+

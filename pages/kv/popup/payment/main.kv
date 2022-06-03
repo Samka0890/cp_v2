@@ -1,0 +1,75 @@
+<Payment_Popup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .6, .6
+    separator_height: 0
+    auto_dismiss: False
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: .175, .175
+            pos_hint: {'x': -.001,'y': .89}
+            source: 'pages/kv/popup/printer_paper/images/PaymentIcon.png'
+
+        Label:
+            text: "ТӨЛБӨР ТӨЛӨХ"
+            font_size: root.height*.04
+            font_size: root.width*.04
+            color: rgba("#2894c9")
+            pos_hint: {'x': -.2,'y': .48}
+#------------------------Payment by Social Pay------------------------------
+        ImageButton:
+            source: "pages/kv/popup/printer_paper/images/SocialPay.png"
+            size_hint: .275, .65
+            pos_hint: {'x': .04375, 'y': .18}
+            on_press:
+                root.obj.social_pay_pp()
+                root.obj.print_sound()
+                root.dismiss()
+#------------------------Payment by QPAY------------------------------
+        ImageButton:
+            source: "pages/kv/popup/printer_paper/images/QPAY_BUTTON.png"
+            size_hint: .275, .65
+            pos_hint: {'x': .3625, 'y': .18}
+            on_press:
+                root.obj.QPAY_PP()
+                root.obj.print_sound()
+                root.dismiss()
+#------------------------Payment by Card------------------------------
+        ImageButton:
+            source: "pages/kv/popup/printer_paper/images/Payment_card.png"
+            size_hint: .275, .65
+            pos_hint: {'x': .68125, 'y': .18}
+            on_press:
+                root.obj.PosMachine()
+                root.obj.print_sound()
+                root.dismiss()
+#------------------------Close Button----------------------------------------
+        Label:
+            pos_hint: {'x': .39, 'y': -.016}
+            canvas:
+                Rectangle:
+                    source: 'pages/kv/assets/images/shadow1.png'
+                    size: root.width*0.2, root.height*0.18
+                    pos: self.pos
+        Label:
+            pos_hint: {'x': .42, 'y': .02}
+            size_hint: .15, .125
+            canvas:
+                Color:
+                    rgba: rgba("#d64f66")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: root.width*0.02,root.width*0.02,root.width*0.02,root.width*0.02
+        Button:
+            text: "ХААХ"
+            font_size: root.height*.03
+            font_size: root.width*.03
+            size_hint: .15, .125
+            pos_hint: {'x': .42, 'y': .02}
+            background_normal: ''
+            background_color: 0,0,0,0
+            on_release:
+                root.dismiss()
+                root.obj.print_sound()

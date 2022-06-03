@@ -1,0 +1,32 @@
+<CheckLeftPaperPopup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .4, .5
+    auto_dismiss: True
+    title: 'Уучлаарай! Төхөөрөмжний цаас хүрэлцэхгүй байна.'
+    title_color: 0, 0, 0, 0.7
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: 0.7, 0.5
+            pos_hint: {'x': 0.125,'y': 0.2}
+            id: imageView
+            name: imageView
+            source: 'CloudPrint/asset/uix/paper.png'
+        Label:
+            id: caution
+            text: ""
+            font_size: root.height*.04
+            font_size: root.width*.04
+            bold: True
+            color: rgba("#4ebf6d")
+            pos_hint: {'x': 0,'y': 0.35}
+        Label:
+            text: "Манай инженер тун удахгүй ирж цаас цэнэглэх болно."
+            font_size: root.height*.025
+            font_size: root.width*.025
+            bold: True
+            color: rgba("#333333")
+            pos_hint: {'x': 0,'y': -0.45}

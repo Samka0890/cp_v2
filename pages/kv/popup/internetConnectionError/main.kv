@@ -1,0 +1,27 @@
+<internetConnectionError>:
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .4, .5
+    auto_dismiss: False
+    separator_height: 0
+    FloatLayout:
+        Image:
+            size_hint: 0.9, 0.7
+            pos_hint: {'x': 0.05,'y': 0.125}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/assets/images/error.png'
+        Label:
+            id: caution
+            text: "Сүлжээнд алдаа гарлаа. Та түр хүлээнэ үү..."
+            font_size: root.height*.04
+            font_size: root.width*.04
+            bold: True
+            color: rgba("#fc6868")
+            pos_hint: {'x': 0,'y': 0.45}
+        Label:
+            text: "Манай инженер тун удахгүй алдааг засах болно."
+            font_size: root.height*.025
+            font_size: root.width*.025
+            bold: True
+            color: rgba("#333333")
+            pos_hint: {'x': 0,'y': -0.45}

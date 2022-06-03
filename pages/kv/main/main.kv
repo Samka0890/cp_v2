@@ -1,0 +1,202 @@
+<MainScreen>:
+    name: "main_screen"
+    FloatLayout:
+        LabelBtn:
+            size_hint: .3, .6
+            pos_hint: {'x': .175, 'y': 0.2}
+            opacity:.8
+            on_press:
+                introduction.pos = root.width, root.height*0.2
+                root.manager.transition.direction = 'right'
+                root.manager.current = "online_screen"
+                introduction.opacity = 0
+                root.cancel_clock()
+                root.sound_main()
+            canvas:
+                Color:
+                    rgba: rgba("#b2edd4")
+                RoundedRectangle:
+                    size: root.width*0.3,root.height*0.6
+                    pos: self.pos
+                    radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+        ImageButton:
+            source: 'pages/kv/main/images/world.png'
+            size_hint: .3, .4
+            pos_hint: {'x': .175, 'y': 0.355}
+            on_press:
+                introduction.pos = root.width, root.height*0.2
+                root.manager.transition.direction = 'right'
+                root.manager.current = "online_screen"
+                introduction.opacity = 0
+                root.cancel_clock()
+                root.sound_main()
+
+        Label:
+            text: "Онлайн Горим"
+            pos_hint: {'x': -.175, 'y': -.2}
+            font_size: root.height*0.05
+            color: rgba("#17574a")
+        Label:
+        	id: touchLabel
+            opacity: .5
+            pos_hint: {'x': .31, 'y': .21}
+            canvas:
+                Rectangle:
+                    source: 'pages/kv/main/images/touchFinger.png'
+                    size: root.width*0.04,root.height*0.04
+                    pos: self.pos
+    FloatLayout:
+        LabelBtn:
+            opacity: 1
+            size_hint: .3, .6
+            pos_hint: {'x': .525, 'y': 0.2}
+            on_press:
+                introduction.pos = root.width, root.height*0.2
+                root.manager.transition.direction = 'left'
+                root.manager.current = "offline_screen"
+                introduction.opacity = 0
+                root.cancel_clock()
+                root.sound_main()
+            canvas:
+                Color:
+                    rgba: rgba("#f5dfda")
+                RoundedRectangle:
+                    size: root.width*0.3,root.height*0.6
+                    pos: self.pos
+                    radius: root.width*0.03,root.width*0.03,root.width*0.03,root.width*0.03
+        ImageButton:
+            source:'pages/kv/main/images/flashDrive.png'
+            pos_hint: {'x': .525, 'y': .355}
+            size_hint: .3, .4
+            on_press:
+                introduction.pos = root.width, root.height*0.2
+                root.manager.transition.direction = 'left'
+                root.manager.current = "offline_screen"
+                introduction.opacity = 0
+                root.cancel_clock()
+                root.sound_main()
+        Label:
+            text: "Энгийн Горим"
+            pos_hint: {'x': .175, 'y': -.2}
+            font_size: root.height*0.05
+            color: rgba("#17574a")
+        Label:
+            id: touchLabel
+            opacity: .5
+            pos_hint: {'x': .66, 'y': .21}
+            canvas:
+                Rectangle:
+                    source: 'pages/kv/main/images/touchFinger.png'
+                    size: root.width*0.04,root.height*0.04
+                    pos: self.pos
+        Label:
+            text: "ХЭВЛЭХ ҮЙЛЧИЛГЭЭ"
+            pos_hint: {'x': .0, 'y': .4}
+            font_size: root.height*0.04
+            color: rgba("#17574a")
+        Image:
+            size_hint: .075, .075
+            pos_hint: {'x': .465,'y': .92}
+            source: 'pages/kv/main/images/CP_logo.png'
+
+#----------------------------LAbEL AND TIME---------------------------------
+    FloatLayout:
+        size_hint: 1, .1
+        pos_hint: {'x': 0, 'y': 0}
+        # TimeLabel:
+        #     pos_hint: {'x': -.43, 'y': 0.02}
+        #     font_size: root.height*0.06
+        #     color: rgba("#555555")
+        #     font_name: 'Sylfaen'
+        Label:
+            text: "@NIRGE SYSTEMS"
+            pos_hint: {'x': 0, 'y': 0}
+            font_size: root.height*0.02
+            color: rgba("#555555")
+
+        Label:
+            text: "Холбоо барих : 89810890"
+            pos_hint: {'x': 0, 'y': -.3}
+            font_size: root.height*0.02
+            color: rgba("#555555")
+
+
+ ######################### help button #########################
+    FloatLayout:
+        ImageButton:
+            id: help_icon
+            opacity: 1
+            source: 'pages/kv/main/images/help.jpg'
+            size_hint: 0.125, 0.125
+            pos_hint: {'x': 0.8875, 'y': 0.05}
+            on_press:
+                introduction.opacity = 1
+                root.help_btn()
+                root.sound_main()
+        Label:
+            text: 'Заавар'
+            halign: 'center'
+            font_size: root.height*0.03
+            color: rgba("#555555")
+            size_hint: 0.06, 0.025
+            pos_hint: {'x': 0.9225, 'y': 0.02}
+    ######################### introduction #########################
+    FloatLayout:
+        id: introduction
+        size_hint: 0.12, 0.6
+        pos: root.width, root.height*0.25
+        # pos_hint: {'x': 0.88, 'y': 0.2}
+        # Image:
+        #     source: 'CloudPrint/asset/kv/main/shape1.png'
+        #     size_hint: 1.5, 2
+        #     pos_hint: {'x': 0, 'y': -0.51}
+        #     allow_stretch: False
+        #     keep_ratio: True
+        Label:
+            text: 'CLOUD PRINT \n ашиглах заавар'
+            halign: 'right'
+            bold: True
+            font_size: root.height*0.018
+            color: rgba("#555555")
+            size_hint: 0.7, 0.05
+            pos_hint: {'x': 0.25, 'y': 0.925}
+        ######################### buttons of introduction #########################
+        ImageButton:
+            source: 'pages/kv/main/images/world.png'
+            size_hint: 0.5, 0.25
+            pos_hint: {'x': 0.35, 'y': 0.65}
+            on_press:
+                root.OnlineGuide_Popup()
+        Label:
+            text: 'Онлайн горимын \n заавар'
+            halign: 'center'
+            font_size: root.height*0.015
+            color: rgba("#555555")
+            size_hint: 0.7, 0.025
+            pos_hint: {'x': 0.25, 'y': 0.625}
+        ImageButton:
+            source: 'pages/kv/main/images/flashDrive.png'
+            size_hint: 0.5, 0.25
+            pos_hint: {'x': 0.35, 'y': 0.35}
+            on_press:
+                root.OfflineGuide_Popup()
+        Label:
+            text: 'Энгийн горимын \n заавар'
+            halign: 'center'
+            font_size: root.height*0.015
+            color: rgba("#555555")
+            size_hint: 0.7, 0.025
+            pos_hint: {'x': 0.25, 'y': 0.325}
+        ImageButton:
+            source: 'pages/kv/main/images/PaymentIcon.png'
+            size_hint: 0.5, 0.25
+            pos_hint: {'x': 0.35, 'y': 0.05}
+            on_press:
+                root.PaymentGuide_Popup()
+        Label:
+            text: 'Төлбөр төлөх \n заавар'
+            halign: 'center'
+            font_size: root.height*0.015
+            color: rgba("#555555")
+            size_hint: 0.7, 0.025
+            pos_hint: {'x': 0.25, 'y': 0.03}

@@ -1,0 +1,12 @@
+activate
+*.swp
+__pycache__
+.vscode/
+
+GHOSTSCRIPT/*
+!GHOSTSCRIPT/.keep
+GSPRINT/*
+!GSPRINT/.keep
+
+cloudPrint/asset/socialPay/*
+!cloudPrint/asset/socialPay/.keep

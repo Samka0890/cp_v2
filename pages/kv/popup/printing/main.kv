@@ -1,0 +1,18 @@
+<PrintingPopup>:
+    id: askContinue
+    background: 'pages/kv/assets/images/white.jpg'
+    size_hint: .3, .4
+    auto_dismiss: False
+    title: 'Таны файлыг хэвлэж байна. Түр хүлээнэ үү. 90956161'
+    title_color: 0, 0, 0, 1
+    title_align: 'center'
+    title_size: '30sp'
+    separator_height:
+    FloatLayout:
+        Image:
+            size_hint: 1, 0.8
+            pos_hint: {'x': 0,'y': 0.2}
+            id: imageView
+            name: imageView
+            source: 'pages/kv/popup/printing/images/printer.gif'
+            anim_delay: 0.03
