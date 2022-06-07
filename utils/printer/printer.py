@@ -21,10 +21,7 @@ def printing(page_num_start, page_num_end):
     paper_duplex = CLOUD_PRINT.get_paper_duplex()
     page_orientation = CLOUD_PRINT.get_page_orientation()
 
-    print(file_name)
-
-    params = """-ghostscript "{ghostscript_path}" -printer "{current_printer}" "{file_name}"
-    """.format(
+    params = """-ghostscript "{ghostscript_path}" -printer "{current_printer}" "{file_name}" """.format(
         ghostscript_path=ghostscript_path,
         current_printer=current_printer,
         file_name=file_name,

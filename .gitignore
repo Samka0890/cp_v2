@@ -10,3 +10,6 @@ GSPRINT/*
 
 cloudPrint/asset/socialPay/*
 !cloudPrint/asset/socialPay/.keep
+
+cloudPrint/save_image/*
+!cloudPrint/save_image/.keep
