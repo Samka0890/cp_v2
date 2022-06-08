@@ -3,6 +3,8 @@ activate
 __pycache__
 .vscode/
 
+venv/*
+
 GHOSTSCRIPT/*
 !GHOSTSCRIPT/.keep
 GSPRINT/*
